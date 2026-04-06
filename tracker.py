@@ -31,7 +31,7 @@ def view_expenses(n=5):
 
 # Summarize expense data
 def summarize_expenses(by="Category"):
-    summary = data[data["Income/Expenses"] == "Expenses"].groupby(by)["Amount"].sum()
+    summary = data[data["Income/Expense"] == "Expense"].groupby(by)["Amount"].sum()
     return summary.sort_values(ascending=False)
 
 
