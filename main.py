@@ -1,4 +1,6 @@
 import pandas as pd
+from ai_engine import auto_categorize
+from dashboard import generate_dashboard
 
 df = pd.read_csv("Sample Expense Data.csv")
 data = df[["Date", "Category", "Note", "Amount", "Income/Expense"]]
@@ -33,6 +35,9 @@ def view_expenses(n=5):
 def summarize_expenses(by="Category"):
     summary = data[data["Income/Expense"] == "Expense"].groupby(by)["Amount"].sum()
     return summary.sort_values(ascending=False)
+
+
+generate_dashboard(data)
 
 
 # Add the weekend expenses
